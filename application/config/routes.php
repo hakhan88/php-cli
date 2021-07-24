@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['cli/test'] = 'Cli/test';
 $route['cli/(:any)'] = 'Cli/index/$1';
 
 // default routing settings by codeigniter
