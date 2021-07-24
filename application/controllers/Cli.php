@@ -9,11 +9,10 @@ class Cli extends CI_Controller {
 
     public function index($string = 'World')
         {
-            echo strtoupper($string);
-            echo '<br/>';
-            echo $this->altCaps($string);
-
+            echo strtoupper($string)."\n";
+            echo $this->altCaps($string)."\n";
             $this->export_csv();
+            echo "CSV created!";
         }
 
     public function altCaps($str)
