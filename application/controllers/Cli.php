@@ -11,7 +11,7 @@ class Cli extends CI_Controller {
         {
             echo strtoupper($string)."\n";
             echo $this->altCaps($string)."\n";
-            $this->export_csv();
+            $this->export_csv($string);
             echo "CSV created!";
         }
 
@@ -31,20 +31,13 @@ class Cli extends CI_Controller {
             return $result;
         }
 
-        public function export_csv()
+        public function export_csv($string)
         {
-            $this->load->helper('csv');
-            $export_arr = array();
-            $employee_details[] = array('f_name'=> "Nishit", 'l_name'=> "patel", 'mobile'=> "999999999", 'gender'=> "male");
-
-            
-            $title = array("Id", "Name", "Email", "Phone", "Created at");
-            array_push($export_arr, $title);
-            if (!empty($employee_details)) {
-                foreach ($employee_details as $employee) {
-                    array_push($export_arr, $employee);
-                }
+            $fp = fopen('file.csv', 'w');
+            $arrayOfChars = array(str_split($string));
+            foreach ($arrayOfChars as $fields) {
+                fputcsv($fp, $fields);
             }
-            convert_to_csv($export_arr, 'output-' . date('F d Y') . '.csv', ',');
+            fclose($fp);
         }
 }
