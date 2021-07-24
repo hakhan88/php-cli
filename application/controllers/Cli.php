@@ -9,14 +9,26 @@ class Cli extends CI_Controller {
     }
 
     public function index($string = 'World') {
-        echo strtoupper($string)."\n";
-        echo $this->altCaps($string)."\n";
+        echo $this->stringToUpperCase($string)."\n";
+        echo $this->stringToAlternateCase($string)."\n";
         $this->export_csv($string);
         echo "CSV created!";
     }
 
+    public function stringToUpperCase($string) {
+        return strtoupper($string);
+    }
+
+    public function stringToAlternateCase($string) {
+        return $this->altCaps($string);
+    }
+
     public function test() {
-        echo 'unit test';
+        $string = 'hello world';
+        $unitTest_1 = $this->stringToUpperCase($string);
+        $unitTest_2 = $this->stringToAlternateCase($string);
+        echo $this->unit->run($unitTest_1, 'HELLO WORLD', 'Upper Case');
+        echo $this->unit->run($unitTest_2, 'hElLo WoRlD', 'Alternate Case');
     }
 
     public function altCaps($str) {
