@@ -1,6 +1,7 @@
-# How to run the cli commant 
+# How to run the cli command
 
-Please cd to root directory and run the following commant `php index.php cli "hello world"`
+Please cd to root directory and run the following command `php index.php cli "hello world"`
+the "hello world" can be changed to any string of on your preference 
 
 # how to run unit test
 
